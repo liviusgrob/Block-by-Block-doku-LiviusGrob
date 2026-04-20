@@ -3,91 +3,371 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ressourcen - Block by Block</title>
+    <title>Ressourcen – Block by Block</title>
     <style>
         :root {
             --primary-dark: #0D47A1;
             --primary: #1565C0;
             --surface: #ffffff;
-            --background: #f8fafc;
-            --text: #1e293b;
-            --text-light: #64748b;
-            --border: #e2e8f0;
-            --shadow: 0 4px 12px rgba(13, 71, 161, 0.1);
+            --background: #f4f7fb;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --border: #dbe3ef;
+            --shadow: 0 8px 20px rgba(13, 71, 161, 0.08);
             --radius: 12px;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
-        body { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); color: var(--text); line-height: 1.6; }
-        .page-container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(160deg, #f8fbff 0%, var(--background) 100%);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .page-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 36px 20px 48px;
+        }
+
         .back-button {
-            display: inline-flex; align-items: center; gap: 10px; background: var(--primary); color: white;
-            text-decoration: none; padding: 12px 24px; border-radius: var(--radius); margin-bottom: 30px;
-            font-weight: 600; transition: background 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: background 0.2s ease, transform 0.2s ease;
+            margin-bottom: 20px;
         }
-        .back-button:hover { background: var(--primary-dark); }
+
+        .back-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
         .section-header {
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary)); color: white;
-            padding: 35px; border-radius: var(--radius); margin-bottom: 30px; text-align: center;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: #ffffff;
+            border-radius: var(--radius);
+            padding: 30px 24px;
+            margin-bottom: 28px;
+            text-align: center;
+            box-shadow: var(--shadow);
         }
-        .section-title { font-size: 2.2rem; font-weight: 300; margin-bottom: 10px; }
-        .section-icon { font-size: 2.8rem; margin-bottom: 15px; }
+
+        .section-header h1 {
+            font-size: clamp(1.6rem, 2.2vw, 2.2rem);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .section-header p {
+            opacity: 0.95;
+        }
+
+        .category {
+            margin-bottom: 30px;
+        }
+
+        .category h2 {
+            color: var(--primary-dark);
+            font-size: 1.25rem;
+            margin-bottom: 14px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #cfe0fb;
+        }
+
         .tools-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin: 25px 0;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
         }
+
         .tool-card {
-            background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-            padding: 25px; transition: transform 0.2s;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 18px;
+            box-shadow: 0 3px 10px rgba(13, 71, 161, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
         }
-        .tool-card:hover { transform: translateY(-4px); border-color: var(--primary-light); }
-        .tool-name { font-size: 1.3rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 5px; }
-        .tool-type { font-size: 0.9rem; color: var(--text-light); font-style: italic; margin-bottom: 15px; }
-        .document-footer { text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--border); color: var(--text-light); font-size: 0.95rem; }
+
+        .tool-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+            border-color: #b8cff5;
+        }
+
+        .tool-icon {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .tool-name {
+            color: var(--primary-dark);
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .tool-type {
+            font-size: 0.86rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .tool-card p {
+            font-size: 0.95rem;
+        }
+
+        .note-box {
+            background: #ffffff;
+            border: 1px solid #c8daf7;
+            border-left: 5px solid var(--primary);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-top: 8px;
+            box-shadow: 0 3px 10px rgba(13, 71, 161, 0.05);
+        }
+
+        .note-box p {
+            margin: 0;
+            color: #1f3d73;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .document-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+            font-size: 0.92rem;
+        }
+
+        @media (max-width: 980px) {
+            .tools-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 640px) {
+            .page-container {
+                padding: 24px 14px 34px;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="page-container">
+    <main class="page-container">
         <a href="index.html" class="back-button">← Zurück zur Startseite</a>
-        
-        <div class="section-header">
-            <div class="section-icon">🛠️</div>
-            <h1 class="section-title">Ressourcen & Werkzeuge</h1>
-            <p>Software und Lernressourcen für optimierten Workflow</p>
-        </div>
 
-        <div class="tools-grid">
-            <div class="tool-card">
-                <div style="font-size: 2.5rem; margin-bottom: 15px; color: var(--primary);">⛏️</div>
-                <div class="tool-name">Mineways</div>
-                <div class="tool-type">Standalone-Programm</div>
-                <p>Exportiert Bereiche aus Minecraft-Welten als 3D-Modelle (.obj, .stl) für Blender. Ideal für schnelles Erstellen von Landschaften und Gebäuden.</p>
-            </div>
-            <div class="tool-card">
-                <div style="font-size: 2.5rem; margin-bottom: 15px; color: var(--primary);">🎨</div>
-                <div class="tool-name">McPrep (Minecraft Prepper)</div>
-                <div class="tool-type">Blender-Addon</div>
-                <p>Importiert und verwaltet Minecraft-Modelle und -Texturen direkt in Blender. Automatisiert Materialzuweisung und optimiert den Workflow.</p>
-            </div>
-            <div class="tool-card">
-                <div style="font-size: 2.5rem; margin-bottom: 15px; color: var(--primary);">🤖</div>
-                <div class="tool-name">BSS Rig Pack</div>
-                <div class="tool-type">Rigging-/Model-Pack</div>
-                <p>Enthält vorgefertigte, animierbare Rigged-Modelle für Steve, Kreaturen und Items. Spart enorm viel Zeit beim Charakter-Setup.</p>
-            </div>
-        </div>
+        <header class="section-header">
+            <h1>Ressourcen &amp; Werkzeuge</h1>
+            <p>Alle zentralen Tools, Plattformen und KI‑Assistenten für die Produktion von <strong>Block by Block</strong>.</p>
+        </header>
 
-        <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 25px; margin-top: 40px; border-radius: var(--radius);">
-            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
-                <div style="font-size: 2rem; color: #ffc107;">📺</div>
-                <div style="font-size: 1.3rem; font-weight: 700; color: #856404;">YouTube: Minecraft Animation Tutorials</div>
+        <section class="category" aria-labelledby="workflow-tools">
+            <h2 id="workflow-tools">Blender &amp; Workflow</h2>
+            <div class="tools-grid">
+                <article class="tool-card">
+                    <div class="tool-icon">🧊</div>
+                    <h3 class="tool-name">Blender 3.6 / 4.5</h3>
+                    <div class="tool-type">3D‑Suite / Hauptsoftware</div>
+                    <p>Zentrales Tool für Modellierung, Rigging, Animation, Beleuchtung und Rendering aller Filmszenen.</p>
+                </article>
+                <article class="tool-card">
+                    <div class="tool-icon">⛏️</div>
+                    <h3 class="tool-name">Mineways 12.11</h3>
+                    <div class="tool-type">World‑Export‑Tool</div>
+                    <p>Exportiert Minecraft‑Welten in Blender‑kompatible 3D‑Modelle für Landschaften, Gebäude und Kulissen.</p>
+                </article>
+                <article class="tool-card">
+                    <div class="tool-icon">🎨</div>
+                    <h3 class="tool-name">McPrep</h3>
+                    <div class="tool-type">Blender‑Addon</div>
+                    <p>Automatisiert Import, Materialien und Texturen für Minecraft‑Assets und beschleunigt den gesamten Workflow.</p>
+                </article>
+                <article class="tool-card">
+                    <div class="tool-icon">🤖</div>
+                    <h3 class="tool-name">BSS Rig Pack</h3>
+                    <div class="tool-type">Rig‑Bibliothek</div>
+                    <p>Bereitstellung animierbarer Minecraft‑Charaktere mit vorkonfigurierten Controls für schnelle Szenenproduktion.</p>
+                </article>
+                <article class="tool-card">
+                    <div class="tool-icon">📺</div>
+                    <h3 class="tool-name">YouTube‑Playlist</h3>
+                    <div class="tool-type">Lernressource (62 Tutorials)</div>
+                    <p>Sammlung praxisnaher Tutorials zu Minecraft‑Animation, Texturierung, Rigging, Kameraarbeit und Rendering.</p>
+                </article>
+                <article class="tool-card">
+                    <div class="tool-icon">🧩</div>
+                    <h3 class="tool-name">MC Animaker</h3>
+                    <div class="tool-type">Animations‑Erweiterung</div>
+                    <p>Ermöglicht erweiterte, datapack‑gesteuerte Animationsabläufe für präzise und wiederholbare Bewegungsabläufe.</p>
+                </article>
+                <article class="tool-card">
+                    <div class="tool-icon">🧪</div>
+                    <h3 class="tool-name">MCBlend</h3>
+                    <div class="tool-type">Bedrock‑Modellierung</div>
+                    <p>Erstellung von Bedrock‑Modellen inklusive physikalischer Simulation zur Entwicklung dynamischer Effekte.</p>
+                </article>
+                <article class="tool-card">
+                    <div class="tool-icon">🪄</div>
+                    <h3 class="tool-name">R‑G Simple Minecraft Rig</h3>
+                    <div class="tool-type">Open‑Source Rig (MIT)</div>
+                    <p>Einfaches, kostenloses Rig für schnellen Einstieg in Charakteranimation mit schlanker Bedienung.</p>
+                </article>
+                <article class="tool-card">
+                    <div class="tool-icon">🕹️</div>
+                    <h3 class="tool-name">Endertainer Rig</h3>
+                    <div class="tool-type">Modulares Rigging‑System</div>
+                    <p>Fortgeschrittenes Setup mit modularen Komponenten für komplexe Charakter‑Posen und präzise Kontrolle.</p>
+                </article>
+                <article class="tool-card">
+                    <div class="tool-icon">🎛️</div>
+                    <h3 class="tool-name">Thomas Rig Legacy</h3>
+                    <div class="tool-type">Rig‑Komplettlösung</div>
+                    <p>Umfangreiches Rig mit UI‑Panel und Face‑Controls für ausdrucksstarke Animationen und effiziente Bedienung.</p>
+                </article>
+                <article class="tool-card">
+                    <div class="tool-icon">💠</div>
+                    <h3 class="tool-name">Crafter GSL</h3>
+                    <div class="tool-type">Render‑/Animationstool</div>
+                    <p>Spezialisierte Unterstützung für Yes‑Steve‑Model‑Charaktere bei Rendering und Animationsprozessen.</p>
+                </article>
+                <article class="tool-card">
+                    <div class="tool-icon">🦴</div>
+                    <h3 class="tool-name">Auto‑Rig Pro (ARP)</h3>
+                    <div class="tool-type">Professionelles Rigging‑Addon</div>
+                    <p>Leistungsstarkes Rigging‑System für menschliche Charaktere und komplexere Bewegungsabläufe außerhalb des Minecraft‑Standards.</p>
+                </article>
+                <article class="tool-card">
+                    <div class="tool-icon">🧱</div>
+                    <h3 class="tool-name">Blockbench</h3>
+                    <div class="tool-type">Spezial‑Modellierungstool</div>
+                    <p>Fokussiert auf Minecraft‑Assets, ideal für Block‑Modelle, Items und schnelle Iteration von Game‑nahen Designs.</p>
+                </article>
             </div>
-            <p>Umfangreiche Playlist mit über 60 Tutorials zu allen Aspekten der Minecraft-Animation in Blender (Modellieren, Texturieren, Rigging, Animieren, Rendern).</p>
-        </div>
+        </section>
+
+        <section class="category" aria-labelledby="ai-assistants">
+            <h2 id="ai-assistants">KI‑Assistenten (unterstützend)</h2>
+            <div class="tools-grid">
+                <article class="tool-card">
+                    <div class="tool-icon">💬</div>
+                    <h3 class="tool-name">ChatGPT / Codex (OpenAI)</h3>
+                    <div class="tool-type">KI‑Assistenz</div>
+                    <p>Unterstützung bei Python‑Skripten, Fehlersuche und Optimierung technischer Abläufe in der Produktionspipeline.</p>
+                </article>
+                <article class="tool-card">
+                    <div class="tool-icon">🧠</div>
+                    <h3 class="tool-name">DeepSeek V4</h3>
+                    <div class="tool-type">KI‑Assistenz</div>
+                    <p>Hilft bei Rigging‑Erklärungen und bei der Strukturierung von HTML/CSS in der Dokumentationsseite.</p>
+                </article>
+                <article class="tool-card">
+                    <div class="tool-icon">📝</div>
+                    <h3 class="tool-name">Claude (Anthropic)</h3>
+                    <div class="tool-type">KI‑Assistenz</div>
+                    <p>Eingesetzt zur sprachlichen Überarbeitung von Texten und zur kompakten Zusammenfassung von Protokollen.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="category" aria-labelledby="model-platforms">
+            <h2 id="model-platforms">Plattformen für 3D‑Modelle</h2>
+            <div class="tools-grid">
+                <article class="tool-card">
+                    <div class="tool-icon">🌐</div>
+                    <h3 class="tool-name">Sketchfab</h3>
+                    <div class="tool-type">3D‑Plattform</div>
+                    <p>Interaktive Vorschau und Beschaffung von 3D‑Modellen, insbesondere für Charaktere und Kreaturen.</p>
+                </article>
+                <article class="tool-card">
+                    <div class="tool-icon">📦</div>
+                    <h3 class="tool-name">TurboSquid</h3>
+                    <div class="tool-type">3D‑Asset‑Marktplatz</div>
+                    <p>Bietet hochwertige Minecraft‑Modelle und weitere Assets für detailreiche Szenen und Requisiten.</p>
+                </article>
+                <article class="tool-card">
+                    <div class="tool-icon">🛒</div>
+                    <h3 class="tool-name">CGTrader</h3>
+                    <div class="tool-type">3D‑Asset‑Plattform</div>
+                    <p>Kombiniert kostenlose und kostenpflichtige Modelle, passend für schnelle Set‑Erweiterungen.</p>
+                </article>
+                <article class="tool-card">
+                    <div class="tool-icon">📐</div>
+                    <h3 class="tool-name">3DExport</h3>
+                    <div class="tool-type">Modellbibliothek</div>
+                    <p>Quelle für Blender‑kompatible Modelle zur Ergänzung von Umgebungen, Props und technischen Objekten.</p>
+                </article>
+                <article class="tool-card">
+                    <div class="tool-icon">🧴</div>
+                    <h3 class="tool-name">BlenderKit</h3>
+                    <div class="tool-type">Material‑/Asset‑Bibliothek</div>
+                    <p>Direkter Zugriff auf Texturen und Materialien wie Terrakotta‑Sets für realistischere Oberflächen.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="category" aria-labelledby="sound-music">
+            <h2 id="sound-music">Sound &amp; Musik</h2>
+            <div class="tools-grid">
+                <article class="tool-card">
+                    <div class="tool-icon">🔊</div>
+                    <h3 class="tool-name">Pixabay</h3>
+                    <div class="tool-type">Audio‑Ressourcen</div>
+                    <p>Lizenzfreie Soundeffekte und Umgebungsgeräusche (z. B. Wind, Natur‑Ambience) für die Tonkulisse.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="category" aria-labelledby="hosting-docs">
+            <h2 id="hosting-docs">Hosting &amp; Dokumentation</h2>
+            <div class="tools-grid">
+                <article class="tool-card">
+                    <div class="tool-icon">🚀</div>
+                    <h3 class="tool-name">GitHub Pages</h3>
+                    <div class="tool-type">Web‑Hosting</div>
+                    <p>Kostenloses Hosting der interaktiven Projektdokumentation unter einer stabilen, öffentlich zugänglichen URL.</p>
+                </article>
+                <article class="tool-card">
+                    <div class="tool-icon">🎬</div>
+                    <h3 class="tool-name">DaVinci Resolve</h3>
+                    <div class="tool-type">Postproduktion</div>
+                    <p>Finaler Videoschnitt, Übergänge, Audiomix und Ausspielung der fertigen Filmversion.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="category" aria-labelledby="eigenleistung-hinweis">
+            <h2 id="eigenleistung-hinweis">Hinweis zur Eigenleistung</h2>
+            <div class="note-box">
+                <p>„Alle KI‑generierten Vorschläge wurden von mir eigenständig geprüft, angepasst und in den Projektkontext integriert. Die kreative Gestaltung, Entscheidungen und die finale Umsetzung liegen vollständig bei mir.“</p>
+            </div>
+        </section>
 
         <footer class="document-footer">
-            <strong>Block by Block</strong> – Ressourcen<br>
-            Livius Grob | Team G | Stand: 19. April 2026
+            <strong>Block by Block</strong> – Ressourcenübersicht<br>
+            Livius Grob | Team G | Stand: 20. April 2026
         </footer>
-    </div>
+    </main>
 </body>
-
 </html>
