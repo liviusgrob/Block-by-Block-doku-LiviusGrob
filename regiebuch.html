@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regiebuch - RESPAWN</title>
+    <title>Regiebuch - Block by Block</title>
     <style>
         :root {
             --primary-dark: #0D47A1;
@@ -36,9 +36,9 @@
         }
         .scene-card {
             background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px;
-            transition: all 0.2s;
+            transition: all 0.2s; box-shadow: var(--shadow);
         }
-        .scene-card:hover { border-color: var(--primary); }
+        .scene-card:hover { border-color: var(--primary); transform: translateY(-2px); }
         .scene-header {
             display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;
             padding-bottom: 15px; border-bottom: 1px solid var(--border);
@@ -46,299 +46,327 @@
         .scene-number { font-size: 2rem; font-weight: 300; color: var(--primary); line-height: 1; }
         .scene-title { flex: 1; margin-left: 15px; }
         .scene-title h3 { font-size: 1.1rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 5px; }
-        .scene-location { font-size: 0.85rem; color: var(--text-light); }
+        .scene-location { font-size: 0.85rem; color: var(--text-light); letter-spacing: 0.02em; }
         .scene-details {
             display: grid; grid-template-columns: auto 1fr; gap: 8px 15px; font-size: 0.9rem;
         }
         .scene-label { font-weight: 600; color: var(--primary-dark); }
-        .document-footer { text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--border); color: var(--text-light); font-size: 0.95rem; }
+        .document-footer {
+            text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--border);
+            color: var(--text-light); font-size: 0.95rem;
+        }
+
+        @media (max-width: 680px) {
+            .page-container { padding: 24px 14px; }
+            .section-header { padding: 26px 20px; }
+            .section-title { font-size: 1.8rem; }
+            .scenes-grid { grid-template-columns: 1fr; gap: 18px; }
+        }
     </style>
 </head>
 <body>
     <div class="page-container">
         <a href="index.html" class="back-button">← Zurück zur Startseite</a>
-        
+
         <div class="section-header">
             <div class="section-icon">🎬</div>
-            <h1 class="section-title">Regiebuch – Szenen 0-18</h1>
-            <p>Vollständige Beschreibung aller 19 Filmszenen</p>
+            <h1 class="section-title">Regiebuch – Block by Block</h1>
+            <p>Visuelles Storyboard (ohne Dialog) · Laufzeit ca. 15 Minuten · 18 Szenen</p>
         </div>
 
         <div class="scenes-grid">
-            <!-- Szene 0 -->
-            <div class="scene-card">
-                <div class="scene-header">
-                    <div class="scene-number">0</div>
-                    <div class="scene-title">
-                        <h3>INT. KINDERZIMMER – TAG</h3>
-                        <div class="scene-location">CINEMATIC TITLE</div>
-                    </div>
-                </div>
-                <div class="scene-details">
-                    <div class="scene-label">Kamera:</div> <div>Totale; Dolly-In zum Schreibtisch</div>
-                    <div class="scene-label">Licht:</div> <div>Sonnenlicht, Volumetrik</div>
-                    <div class="scene-label">Sound:</div> <div>Ambient, Vogelgezwitscher</div>
-                    <div class="scene-label">Action:</div> <div>Kind (Silhouette) setzt sich an PC</div>
-                    <div class="scene-label">Titel:</div> <div>RESPAWN: THE FIRST NIGHT</div>
-                    <div class="scene-label">Übergang:</div> <div>Kamera fährt durch Titel → Minecraft-Welt</div>
-                </div>
-            </div>
-            <!-- Szene 1 -->
             <div class="scene-card">
                 <div class="scene-header">
                     <div class="scene-number">1</div>
                     <div class="scene-title">
-                        <h3>INT. KINDERZIMMER – TAG</h3>
-                        <div class="scene-location">PC-PERSPEKTIVE</div>
+                        <h3>INT. FLUR / KÜCHE – SPÄTER NACHMITTAG</h3>
+                        <div class="scene-location">ANKUNFT ZUHAUSE</div>
                     </div>
                 </div>
                 <div class="scene-details">
-                    <div class="scene-label">Kamera:</div> <div>Subjektiv vom Bildschirm</div>
-                    <div class="scene-label">Action:</div> <div>Max klickt "Singleplayer" → "Create New World"</div>
+                    <div class="scene-label">Kamera:</div><div>Halbtotale, ruhiger Follow-Shot vom Flur in die Küche</div>
+                    <div class="scene-label">Licht:</div><div>Warmes, tiefes Sonnenlicht durch Fensterflächen</div>
+                    <div class="scene-label">Sound:</div><div>Leise Raumatmo, Kochgeräusche, sanfte Streicherfläche</div>
+                    <div class="scene-label">Action:</div><div>Der Junge kommt von der Schule, stellt den Rucksack ab, erhält ein warmes Lächeln seiner Mutter und geht still nach oben.</div>
                 </div>
             </div>
-            <!-- Szene 2 -->
+
             <div class="scene-card">
                 <div class="scene-header">
                     <div class="scene-number">2</div>
                     <div class="scene-title">
-                        <h3>EXT. MINECRAFT-SPAWN – TAG</h3>
-                        <div class="scene-location">SPAWN-PUNKT</div>
+                        <h3>INT. KINDERZIMMER – NACHMITTAG</h3>
+                        <div class="scene-location">RITUAL AM SCHREIBTISCH</div>
                     </div>
                 </div>
                 <div class="scene-details">
-                    <div class="scene-label">Kamera:</div> <div>360°-Schwenk um Steve</div>
-                    <div class="scene-label">Action:</div> <div>Steve spawnt, schaut sich um</div>
+                    <div class="scene-label">Kamera:</div><div>Totale zum Zimmer, langsamer Dolly-In zum Schreibtisch</div>
+                    <div class="scene-label">Licht:</div><div>Goldene Sonne, sichtbare Staubpartikel im Gegenlicht</div>
+                    <div class="scene-label">Sound:</div><div>Fensterwind, leiser Raumhall, sanft anschwellende Musik</div>
+                    <div class="scene-label">Action:</div><div>Der Junge setzt sich, atmet ruhig, fährt den PC hoch und blickt mit stiller Vorfreude auf den Monitor.</div>
                 </div>
             </div>
-            <!-- Szene 3 -->
+
             <div class="scene-card">
                 <div class="scene-header">
                     <div class="scene-number">3</div>
                     <div class="scene-title">
-                        <h3>EXT. MINECRAFT-WALD – TAG</h3>
-                        <div class="scene-location">WALD</div>
+                        <h3>INT. MONITORWELT – NACHMITTAG</h3>
+                        <div class="scene-location">TITELÜBERGANG</div>
                     </div>
                 </div>
                 <div class="scene-details">
-                    <div class="scene-label">Action:</div> <div>Steve schlägt Baum, sammelt Holz, craftet Werkbank</div>
+                    <div class="scene-label">Kamera:</div><div>Push-In in den Bildschirm, Übergang in digitale Tiefe</div>
+                    <div class="scene-label">Licht:</div><div>Blauer Monitorglanz, dann farbige Pixel-Luminanz</div>
+                    <div class="scene-label">Sound:</div><div>Boot- und Ladegeräusche, orchestraler Aufwärtsschwung</div>
+                    <div class="scene-label">Action:</div><div>Minecraft-Ladescreen erscheint; der Titel „Block by Block“ baut sich aus Blöcken auf und löst sich in eine lebendige Welt auf.</div>
                 </div>
             </div>
-            <!-- Szene 4 -->
+
             <div class="scene-card">
                 <div class="scene-header">
                     <div class="scene-number">4</div>
                     <div class="scene-title">
-                        <h3>EXT. MINECRAFT-BERG – NACHMITTAG</h3>
-                        <div class="scene-location">BERGHANG</div>
+                        <h3>EXT. MINECRAFT-EBENE – TAG</h3>
+                        <div class="scene-location">ERSTES SPAWNEN</div>
                     </div>
                 </div>
                 <div class="scene-details">
-                    <div class="scene-label">Action:</div> <div>Steve minet Kohle, craftet Fackeln. Sonne sinkt</div>
+                    <div class="scene-label">Kamera:</div><div>Weite Totale, 360°-Schwenk um den Avatar</div>
+                    <div class="scene-label">Licht:</div><div>Klarer Tageshimmel, weiches Sonnenlicht</div>
+                    <div class="scene-label">Sound:</div><div>Wind durch Blätter, ferne Tiere, ruhiges Hauptthema</div>
+                    <div class="scene-label">Action:</div><div>Der blockige Avatar erscheint in einer Plains-Biom-Landschaft und erkundet die Umgebung mit vorsichtiger Neugier.</div>
                 </div>
             </div>
-            <!-- Szene 5 -->
+
             <div class="scene-card">
                 <div class="scene-header">
                     <div class="scene-number">5</div>
                     <div class="scene-title">
-                        <h3>EXT. MINECRAFT-EBENE – ABENDDÄMMERUNG</h3>
-                        <div class="scene-location">EBENE</div>
+                        <h3>EXT. WALDRAND / HÜGEL – TAG</h3>
+                        <div class="scene-location">ERSTE RESSOURCEN</div>
                     </div>
                 </div>
                 <div class="scene-details">
-                    <div class="scene-label">Licht:</div> <div>Dramatischer Sonnenuntergang</div>
-                    <div class="scene-label">Action:</div> <div>Steve baut hastig 4x4-Hütte, setzt Fackeln</div>
-                    <div class="scene-label">Spannung:</div> <div>Erster Zombie-Schrei in der Ferne</div>
+                    <div class="scene-label">Kamera:</div><div>Nahe Action-Coverage von Händen und Blöcken, kurze Cutaways</div>
+                    <div class="scene-label">Licht:</div><div>Warmes Nachmittagslicht, klare Schattenkanten</div>
+                    <div class="scene-label">Sound:</div><div>Holzschläge, Block-Pickups, Stein- und Kohlensounds</div>
+                    <div class="scene-label">Action:</div><div>Der Avatar schlägt Holz, gräbt Stein und Kohle und etabliert die ersten Überlebensschritte.</div>
                 </div>
             </div>
-            <!-- Szene 6 -->
+
             <div class="scene-card">
                 <div class="scene-header">
                     <div class="scene-number">6</div>
                     <div class="scene-title">
-                        <h3>INT. MINECRAFT-HÜTTE – NACHT</h3>
-                        <div class="scene-location">HÜTTE (INNEN)</div>
+                        <h3>EXT. OFFENE LANDSCHAFT – ABEND</h3>
+                        <div class="scene-location">NACHT NÄHERT SICH</div>
                     </div>
                 </div>
                 <div class="scene-details">
-                    <div class="scene-label">Sound:</div> <div>Zombie-Stöhnen, Skelett-Klappern, Creeper-Zischen</div>
-                    <div class="scene-label">Action:</div> <div>Steve hört Monster draußen, craftet steinernen Schwert</div>
+                    <div class="scene-label">Kamera:</div><div>Weitwinkel-Totale mit tiefer Horizontlinie</div>
+                    <div class="scene-label">Licht:</div><div>Orange-rote Dämmerung, sinkende Sonne</div>
+                    <div class="scene-label">Sound:</div><div>Musik kippt in Spannung, entfernte Monsterlaute</div>
+                    <div class="scene-label">Action:</div><div>Zombies, Skelette und Spinnen tauchen in der Distanz auf; ein Creeper-Zischen setzt den Fluchtimpuls.</div>
                 </div>
             </div>
-            <!-- Szene 7 -->
+
             <div class="scene-card">
                 <div class="scene-header">
                     <div class="scene-number">7</div>
                     <div class="scene-title">
-                        <h3>INT. KINDERZIMMER – NACHT</h3>
-                        <div class="scene-location">KINDERZIMMER NACHT</div>
+                        <h3>INT. PROVISORISCHER UNTERSCHLUPF – NACHT</h3>
+                        <div class="scene-location">ERSTE NACHT</div>
                     </div>
                 </div>
                 <div class="scene-details">
-                    <div class="scene-label">Licht:</div> <div>Nur Bildschirm beleuchtet, dunkles Zimmer</div>
-                    <div class="scene-label">Action:</div> <div>Max zittert leicht, greift fester an Maus. Uhr: 02:17</div>
+                    <div class="scene-label">Kamera:</div><div>Nahaufnahme Gesicht, statischer Frame, minimale Bewegung</div>
+                    <div class="scene-label">Licht:</div><div>Dunkel mit wenigen warmen Lecks durch Blockritzen</div>
+                    <div class="scene-label">Sound:</div><div>Kratzen, Stöhnen, dumpfe Schritte um den Shelter</div>
+                    <div class="scene-label">Action:</div><div>Der Avatar verschanzt sich hinter Dirt-Blöcken, bleibt still und wartet die Nacht in angespannter Ruhe ab.</div>
                 </div>
             </div>
-            <!-- Szene 8 -->
+
             <div class="scene-card">
                 <div class="scene-header">
                     <div class="scene-number">8</div>
                     <div class="scene-title">
-                        <h3>INT. MINECRAFT-HÜTTE – NACHT / ACTION</h3>
-                        <div class="scene-location">HÜTTE KAMPF</div>
+                        <h3>EXT. SHELTER-EINGANG – MORGEN</h3>
+                        <div class="scene-location">SONNENAUFGANG</div>
                     </div>
                 </div>
                 <div class="scene-details">
-                    <div class="scene-label">Kamera:</div> <div>Dynamische Handheld-Perspektive, schnelle Schnitte</div>
-                    <div class="scene-label">Action:</div> <div>Creeper sprengt Wandloch. Zombies strömen rein. Steve kämpft</div>
+                    <div class="scene-label">Kamera:</div><div>Low-Angle von innen nach außen, dann weite Totale</div>
+                    <div class="scene-label">Licht:</div><div>Dünne orange Horizontlinie, danach weiches Morgenlicht</div>
+                    <div class="scene-label">Sound:</div><div>Spannung ebbt ab, warmes Leitmotiv kehrt zurück</div>
+                    <div class="scene-label">Action:</div><div>Der Avatar tritt hinaus, schaut über die Landschaft und realisiert: Die erste Nacht ist überstanden.</div>
                 </div>
             </div>
-            <!-- Szene 9 -->
+
             <div class="scene-card">
                 <div class="scene-header">
                     <div class="scene-number">9</div>
                     <div class="scene-title">
-                        <h3>INT. MINECRAFT-HÜTTE – NACHT / TOD</h3>
-                        <div class="scene-location">HÜTTE TOD</div>
+                        <h3>INT. HÖHLE – TAG (MONTAGE I)</h3>
+                        <div class="scene-location">MINING-FORTSCHRITT</div>
                     </div>
                 </div>
                 <div class="scene-details">
-                    <div class="scene-label">Action:</div> <div>Steve wird von Skelett getroffen. Fällt zu Boden</div>
-                    <div class="scene-label">Sound:</div> <div>"Oof"-Sound, dann "You died!"</div>
+                    <div class="scene-label">Kamera:</div><div>Schnelle, klare Montagebilder: Spitzhacke, Fackel, Erzadern</div>
+                    <div class="scene-label">Licht:</div><div>Kontrast aus Dunkelheit und punktuellen Fackeln</div>
+                    <div class="scene-label">Sound:</div><div>Rhythmische Mining-Schläge im Takt der Musik</div>
+                    <div class="scene-label">Action:</div><div>Über mehrere Ingame-Tage sammelt der Avatar Kohle und Eisen, navigiert tiefer in die Unterwelt.</div>
                 </div>
             </div>
-            <!-- Szene 10 -->
+
             <div class="scene-card">
                 <div class="scene-header">
                     <div class="scene-number">10</div>
                     <div class="scene-title">
-                        <h3>INT. KINDERZIMMER – NACHT / REALITÄT</h3>
-                        <div class="scene-location">KINDERZIMMER REAKTION</div>
+                        <h3>INT./EXT. BASIS – TAG (MONTAGE II)</h3>
+                        <div class="scene-location">VOM UNTERSCHLUPF ZUM HAUS</div>
                     </div>
                 </div>
                 <div class="scene-details">
-                    <div class="scene-label">Action:</div> <div>Max klickt auf "Respawn". Seufzt, lehnt sich zurück</div>
+                    <div class="scene-label">Kamera:</div><div>Zeitrafferartige Match-Cuts von Bauzuständen</div>
+                    <div class="scene-label">Licht:</div><div>Abfolge mehrerer Tageszeiten, zunehmend wohnlich</div>
+                    <div class="scene-label">Sound:</div><div>Furnace-Knistern, Platzierungsgeräusche, steigende Streicher</div>
+                    <div class="scene-label">Action:</div><div>Ofen, Wände, Dach, Fenster, Tür und Bett entstehen; aus einer Dirt-Box wird ein echtes Zuhause.</div>
                 </div>
             </div>
-            <!-- Szene 11 -->
+
             <div class="scene-card">
                 <div class="scene-header">
                     <div class="scene-number">11</div>
                     <div class="scene-title">
-                        <h3>EXT. MINECRAFT-SPAWN – NACHTS / WIEDERGEBURT</h3>
-                        <div class="scene-location">SPAWN NACHT</div>
+                        <h3>EXT. SCHNEE / WÜSTE / DARK OAK – TAG</h3>
+                        <div class="scene-location">WELTERKUNDUNG</div>
                     </div>
                 </div>
                 <div class="scene-details">
-                    <div class="scene-label">Action:</div> <div>Steve respawnt am Bett. Alles verloren. Nur Holzfäuste</div>
+                    <div class="scene-label">Kamera:</div><div>Reise-Montage mit weiten Establishing-Shots pro Biom</div>
+                    <div class="scene-label">Licht:</div><div>Kühles Schneelicht, harte Wüstensonne, gedämpftes Waldgrün</div>
+                    <div class="scene-label">Sound:</div><div>Variierende Atmosphären, konstante musikalische Entwicklung</div>
+                    <div class="scene-label">Action:</div><div>Der Avatar durchquert unterschiedliche Biome; jede kleine Errungenschaft macht die Welt vertrauter.</div>
                 </div>
             </div>
-            <!-- Szene 12 -->
+
             <div class="scene-card">
                 <div class="scene-header">
                     <div class="scene-number">12</div>
                     <div class="scene-title">
-                        <h3>EXT. MINECRAFT-LANDSCHAFT – NACHTS / ÜBERLEBEN</h3>
-                        <div class="scene-location">LANDSCHAFT NACHT</div>
+                        <h3>EXT. WALD – TAG</h3>
+                        <div class="scene-location">BEGEGNUNG MIT DEM WOLF</div>
                     </div>
                 </div>
                 <div class="scene-details">
-                    <div class="scene-label">Action:</div> <div>Steve schleicht durch Nacht, sammelt Notfall-Ressourcen</div>
+                    <div class="scene-label">Kamera:</div><div>Wechsel zwischen Nahaufnahme Wolf und ruhigem Zweierbild</div>
+                    <div class="scene-label">Licht:</div><div>Gefiltertes Waldlicht, sanfte Sonnenflecken</div>
+                    <div class="scene-label">Sound:</div><div>Musik wird zarter, leises Schnaufen, Blattbewegung</div>
+                    <div class="scene-label">Action:</div><div>Der Avatar nähert sich langsam, hält einen Knochen hin; der Wolf akzeptiert ihn, die rote Halsbandmarke erscheint.</div>
                 </div>
             </div>
-            <!-- Szene 13 -->
+
             <div class="scene-card">
                 <div class="scene-header">
                     <div class="scene-number">13</div>
                     <div class="scene-title">
-                        <h3>EXT. MINECRAFT-HÖHLE – NACHTS / ENTDECKUNG</h3>
-                        <div class="scene-location">HÖHLE</div>
+                        <h3>EXT./INT. VERSCHIEDENE ORTE – TAG/NACHT</h3>
+                        <div class="scene-location">DAS DUO</div>
                     </div>
                 </div>
                 <div class="scene-details">
-                    <div class="scene-label">Action:</div> <div>Steve findet Eisen, Gold, Diamanten! Aber auch Gefahren</div>
+                    <div class="scene-label">Kamera:</div><div>Parallelbewegungen und Side-Tracking-Shots</div>
+                    <div class="scene-label">Licht:</div><div>Abwechselnd helle Tage und warme Nachtfenster am Haus</div>
+                    <div class="scene-label">Sound:</div><div>Leitmotiv mit freundlicher, hoffnungsvoller Variation</div>
+                    <div class="scene-label">Action:</div><div>Avatar und Wolf reisen gemeinsam durch die Welt; Nähe und Vertrauen werden rein visuell über Bewegungen erzählt.</div>
                 </div>
             </div>
-            <!-- Szene 14 -->
+
             <div class="scene-card">
                 <div class="scene-header">
                     <div class="scene-number">14</div>
                     <div class="scene-title">
-                        <h3>INT. MINECRAFT-BASIS – NACHTS / NEUE HOFFNUNG</h3>
-                        <div class="scene-location">BASIS UNTERGRUND</div>
+                        <h3>INT. TIEFE SCHLUCHT – DUNKEL</h3>
+                        <div class="scene-location">DER FEHLTRITT</div>
                     </div>
                 </div>
                 <div class="scene-details">
-                    <div class="scene-label">Action:</div> <div>Steve craftet Diamantschwert, Rüstung. Schmilzt Eisen</div>
+                    <div class="scene-label">Kamera:</div><div>Subjektiver Schritt zur Kante, abrupter Downward-Drop</div>
+                    <div class="scene-label">Licht:</div><div>Fackellicht gegen bedrohliches Lava-Orange</div>
+                    <div class="scene-label">Sound:</div><div>Echo, Rutschgeräusch, plötzliches musikalisches Vakuum</div>
+                    <div class="scene-label">Action:</div><div>Bei der Erkundung einer Ravine rutscht der Avatar nahe eines Lavapools ab und stürzt in die Tiefe.</div>
                 </div>
             </div>
-            <!-- Szene 15 -->
+
             <div class="scene-card">
                 <div class="scene-header">
                     <div class="scene-number">15</div>
                     <div class="scene-title">
-                        <h3>EXT. MINECRAFT-LANDSCHAFT – MORGENGRAUEN</h3>
-                        <div class="scene-location">LANDSCHAFT MORGEN</div>
+                        <h3>INT. BASIS – TAG</h3>
+                        <div class="scene-location">RESPAWN UND NEUBEGINN</div>
                     </div>
                 </div>
                 <div class="scene-details">
-                    <div class="scene-label">Kamera:</div> <div>Time-Lapse der Nacht bis zum Sonnenaufgang</div>
-                    <div class="scene-label">Action:</div> <div>Steve verlässt Basis, sieht Sonnenaufgang. Monster verschwinden</div>
+                    <div class="scene-label">Kamera:</div><div>Statische Frontalansicht am Shelter-Eingang, dann Innenraum</div>
+                    <div class="scene-label">Licht:</div><div>Nüchternes Tageslicht, zurückhaltend und klar</div>
+                    <div class="scene-label">Sound:</div><div>Respawn-Signal, Musik leiser aber stabil weiterführend</div>
+                    <div class="scene-label">Action:</div><div>Der Bildschirm wird weiß, Respawn erscheint; der Avatar steht leer da, setzt sich an die Werkbank und beginnt erneut.</div>
                 </div>
             </div>
-            <!-- Szene 16 -->
+
             <div class="scene-card">
                 <div class="scene-header">
                     <div class="scene-number">16</div>
                     <div class="scene-title">
-                        <h3>INT. KINDERZIMMER – MORGEN</h3>
-                        <div class="scene-location">KINDERZIMMER MORGEN</div>
+                        <h3>EXT. BERGGIPFEL – SONNENUNTERGANG</h3>
+                        <div class="scene-location">AUSBLICK</div>
                     </div>
                 </div>
                 <div class="scene-details">
-                    <div class="scene-label">Action:</div> <div>Max streckt sich, gähnt. Klickt auf "Save and Quit"</div>
+                    <div class="scene-label">Kamera:</div><div>Aufstieg in Halbtotalen, dann langsamer Kran nach hinten oben</div>
+                    <div class="scene-label">Licht:</div><div>Himmel von Orange zu Violett, lange Abendkanten</div>
+                    <div class="scene-label">Sound:</div><div>Orchester schwillt weich an, später reduzierte Pianonoten</div>
+                    <div class="scene-label">Action:</div><div>Avatar und Wolf erreichen den Gipfel, setzen sich nebeneinander und blicken über die endlose Welt.</div>
                 </div>
             </div>
-            <!-- Szene 17 -->
+
             <div class="scene-card">
                 <div class="scene-header">
                     <div class="scene-number">17</div>
                     <div class="scene-title">
-                        <h3>EXT. MINECRAFT-WELT – TAG / ABSPANN</h3>
-                        <div class="scene-location">WELT ÜBERBLICK</div>
+                        <h3>INT. KINDERZIMMER – NACHT</h3>
+                        <div class="scene-location">RÜCKSCHNITT IN DIE REALITÄT</div>
                     </div>
                 </div>
                 <div class="scene-details">
-                    <div class="scene-label">Kamera:</div> <div>Fliegende Kamerafahrt über die gerettete Welt</div>
-                    <div class="scene-label">Sound:</div> <div>Minecraft-Klaviermusik (Sweden)</div>
+                    <div class="scene-label">Kamera:</div><div>Ruhige Nahaufnahme, leichter Orbit um den Schreibtisch</div>
+                    <div class="scene-label">Licht:</div><div>Blaues Monitorlicht im dunklen Raum</div>
+                    <div class="scene-label">Sound:</div><div>Gedämpfte Zimmeratmo, ausklingendes Hauptthema</div>
+                    <div class="scene-label">Action:</div><div>Der Junge sitzt stiller und gefasster am Schreibtisch, blickt zum dunklen Fenster und wirkt innerlich sortiert.</div>
                 </div>
             </div>
-            <!-- Szene 18 -->
+
             <div class="scene-card">
                 <div class="scene-header">
                     <div class="scene-number">18</div>
                     <div class="scene-title">
-                        <h3>INT. KINDERZIMMER – TAG / POST-CREDITS</h3>
-                        <div class="scene-location">KINDERZIMMER TWIST</div>
+                        <h3>EXT. MINECRAFT-EBENE – STERNENNACHT</h3>
+                        <div class="scene-location">EPILOG / FADE OUT</div>
                     </div>
                 </div>
                 <div class="scene-details">
-                    <div class="scene-label">Action:</div> <div>Bildschirm spiegelt Max, der schläft. Plötzlich: Creeper-Gesicht im Spiegel</div>
-                    <div class="scene-label">Twist:</div> <div>Creeper-Gesicht verschwindet sofort. War es nur Einbildung?</div>
+                    <div class="scene-label">Kamera:</div><div>Weite Rückenansicht, langsamer Pull-Back in die Dunkelheit</div>
+                    <div class="scene-label">Licht:</div><div>Kühle Nachtfarben, blockige Sternmuster am Himmel</div>
+                    <div class="scene-label">Sound:</div><div>Leises Orchester-Nachhallen, Wind, langsames Verstummen</div>
+                    <div class="scene-label">Action:</div><div>Avatar und Wolf gehen Seite an Seite über die offene Ebene; das Bild blendet sanft auf Schwarz aus.</div>
                 </div>
             </div>
         </div>
 
-        <div style="text-align: center; margin-top: 40px; color: var(--text-light); font-style: italic;">
-            Vollständiges Regiebuch mit allen 19 Szenen (0-18)
+        <div class="document-footer">
+            Block by Block · Regiebuch für visuelles Erzählen ohne Dialog · Disney-Pixar-inspirierter Kurzfilm
         </div>
-
-        <footer class="document-footer">
-            <strong>BLOCK BY BLOCK</strong> – Regiebuch<br>
-            Livius Grob | Team G | Stand: 14. April 2026
-        </footer>
     </div>
 </body>
-
 </html>
