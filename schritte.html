@@ -1,90 +1,55 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nächste Schritte - Block by Block</title>
-    <style>
-        :root {
-            --primary-dark: #0D47A1;
-            --primary: #1565C0;
-            --surface: #ffffff;
-            --background: #f8fafc;
-            --text: #1e293b;
-            --text-light: #64748b;
-            --border: #e2e8f0;
-            --shadow: 0 4px 12px rgba(13, 71, 161, 0.1);
-            --radius: 12px;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
-        body { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); color: var(--text); line-height: 1.6; }
-        .page-container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        .back-button {
-            display: inline-flex; align-items: center; gap: 10px; background: var(--primary); color: white;
-            text-decoration: none; padding: 12px 24px; border-radius: var(--radius); margin-bottom: 30px;
-            font-weight: 600; transition: background 0.3s;
-        }
-        .back-button:hover { background: var(--primary-dark); }
-        .section-header {
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary)); color: white;
-            padding: 35px; border-radius: var(--radius); margin-bottom: 30px; text-align: center;
-        }
-        .section-title { font-size: 2.2rem; font-weight: 300; margin-bottom: 10px; }
-        .section-icon { font-size: 2.8rem; margin-bottom: 15px; }
-        .log-item {
-            background: var(--surface); border-left: 4px solid var(--primary); padding: 25px;
-            margin-bottom: 20px; border-radius: 0 var(--radius) var(--radius) 0; box-shadow: var(--shadow);
-        }
-        .document-footer { text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--border); color: var(--text-light); font-size: 0.95rem; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nächste Schritte – Block by Block</title>
+  <style>
+    :root { --primary-dark:#0d47a1; --primary:#1565c0; --surface:#fff; --bg:#f7fbff; --border:#dbe6f5; --text:#1e293b; --muted:#64748b; --radius:12px; --shadow:0 6px 16px rgba(13,71,161,.1);} 
+    *{box-sizing:border-box;margin:0;padding:0;font-family:"Segoe UI",system-ui,sans-serif}
+    body{background:linear-gradient(145deg,#f8fbff,#eaf2ff);color:var(--text);line-height:1.6}
+    .page{max-width:920px;margin:0 auto;padding:34px 18px 44px}
+    .back{display:inline-block;background:var(--primary);color:#fff;text-decoration:none;padding:10px 16px;border-radius:10px;margin-bottom:20px;font-weight:600}
+    .head{background:linear-gradient(135deg,var(--primary-dark),var(--primary));color:#fff;border-radius:var(--radius);padding:26px 20px;text-align:center;box-shadow:var(--shadow);margin-bottom:20px}
+    .card{background:var(--surface);border:1px solid var(--border);border-left:5px solid #16a34a;border-radius:var(--radius);padding:18px 18px 12px;box-shadow:var(--shadow);margin-bottom:14px}
+    .card h2{font-size:1.05rem;margin-bottom:10px}
+    ul{padding-left:18px}
+    li{margin:6px 0}
+    .optional{border-left-color:#2563eb;background:#eff6ff}
+    footer{text-align:center;margin-top:36px;padding-top:16px;border-top:1px solid var(--border);color:var(--muted);font-size:.95rem}
+  </style>
 </head>
 <body>
-    <div class="page-container">
-        <a href="index.html" class="back-button">← Zurück zur Startseite</a>
-        
-        <div class="section-header">
-            <div class="section-icon">🎯</div>
-            <h1 class="section-title">Nächste Schritte & Prioritäten</h1>
-            <p>Stand: 20. April 2026 – Film fertiggestellt, Dokumentation abgeschlossen ✅</p>
-        </div>
+  <div class="page">
+    <a class="back" href="index.html">← Zurück zur Startseite</a>
+    <header class="head">
+      <h1>Nächste Schritte &amp; Prioritäten</h1>
+      <p>Alle Ziele erreicht – Film abgeschlossen (Stand: 20. April 2026)</p>
+    </header>
 
-        <!-- 🔥 HOHE PRIORITÄT -->
-        <div class="log-item" style="border-left-color: #16a34a; background: #f0fdf4;">
-            <div style="font-weight: 700; margin-bottom: 15px; color: #166534; font-size: 1.2rem;">
-                🔥 HOHE PRIORITÄT
-            </div>
-            <ul>
-                <li><strong>✓ Erledigt:</strong> Hauptanimation aller Szenen abgeschlossen.</li>
-            </ul>
-        </div>
+    <section class="card">
+      <h2>🔥 Hohe Priorität</h2>
+      <ul><li><strong>✓ Erledigt:</strong> Hauptanimation aller Szenen abgeschlossen.</li></ul>
+    </section>
 
-        <!-- 📚 MITTLERE PRIORITÄT -->
-        <div class="log-item" style="border-left-color: #16a34a; background: #f0fdf4;">
-            <div style="font-weight: 700; margin-bottom: 15px; color: #166534; font-size: 1.2rem;">
-                📚 MITTLERE PRIORITÄT
-            </div>
-            <ul>
-                <li><strong>✓ Erledigt:</strong> Sounddesign und Musik synchronisiert/finalisiert.</li>
-            </ul>
-        </div>
+    <section class="card">
+      <h2>📚 Mittlere Priorität</h2>
+      <ul><li><strong>✓ Erledigt:</strong> Sounddesign finalisiert (bewusst nur mit Musikspur umgesetzt).</li></ul>
+    </section>
 
-        <!-- 📦 NIEDRIGE PRIORITÄT / OPTIONAL -->
-        <div class="log-item" style="border-left-color: #2563eb; background: #eff6ff;">
-            <div style="font-weight: 700; margin-bottom: 15px; color: #1d4ed8; font-size: 1.2rem;">
-                📦 NIEDRIGE PRIORITÄT (optional)
-            </div>
-            <ul>
-                <li><strong>✓ Erledigt:</strong> Renderfarm einrichten (nicht mehr notwendig dank finalem Render).</li>
-                <li><strong>Optional:</strong> Projekt reflektieren und für Portfolio aufbereiten.</li>
-                <li><strong>Neu:</strong> Projektabgabe erfolgreich – nächste Schritte: Portfolio, Präsentation.</li>
-            </ul>
-        </div>
+    <section class="card optional">
+      <h2>📦 Niedrige Priorität (optional)</h2>
+      <ul>
+        <li><strong>✓ Erledigt:</strong> Render- und Exportprozess erfolgreich abgeschlossen.</li>
+        <li><strong>✓ Erledigt:</strong> Abgabeordner und Web-Dokumentation final synchronisiert.</li>
+        <li><strong>Optional:</strong> Projekt reflektieren und für Portfolio aufbereiten.</li>
+      </ul>
+    </section>
 
-        <footer class="document-footer">
-            <strong>Block by Block</strong> – Nächste Schritte<br>
-            Livius Grob | Team G | Stand: 20. April 2026
-        </footer>
-    </div>
+    <footer>
+      <strong>Block by Block</strong> – Nächste Schritte<br />
+      Livius Grob | Team G | Stand: 20. April 2026
+    </footer>
+  </div>
 </body>
-
 </html>

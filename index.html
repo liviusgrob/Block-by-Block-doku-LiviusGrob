@@ -1,171 +1,123 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Block by Block - Web-Dokumentation</title>
-    <style>
-        :root {
-            --primary-dark: #0D47A1;
-            --primary: #1565C0;
-            --primary-light: #42A5F5;
-            --surface: #ffffff;
-            --background: #f8fafc;
-            --text: #1e293b;
-            --text-light: #64748b;
-            --border: #e2e8f0;
-            --shadow: 0 4px 12px rgba(13, 71, 161, 0.1);
-            --radius: 12px;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
-        body { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); color: var(--text); line-height: 1.6; }
-        .page-container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
-        .main-header { text-align: center; margin-bottom: 60px; }
-        .project-title { font-size: 3.2rem; font-weight: 300; color: var(--primary-dark); margin-bottom: 10px; letter-spacing: -0.5px; }
-        .project-subtitle { font-size: 1.3rem; color: var(--text-light); font-weight: 400; margin-bottom: 50px; }
-        .metadata-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px;
-            background: var(--surface); padding: 30px; border-radius: var(--radius); box-shadow: var(--shadow);
-            max-width: 900px; margin: 0 auto; border: 1px solid var(--border);
-        }
-        .metadata-item { text-align: center; }
-        .metadata-label { display: block; font-size: 0.95rem; color: var(--text-light); margin-bottom: 8px; font-weight: 500; }
-        .metadata-value { font-size: 1.1rem; color: var(--primary-dark); font-weight: 600; }
-        .cards-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin: 50px 0;
-        }
-        .nav-card {
-            background: var(--surface); border-radius: var(--radius); padding: 35px 30px; text-decoration: none;
-            color: var(--text); display: block; transition: all 0.3s ease; border: 2px solid transparent;
-            box-shadow: var(--shadow); text-align: center; cursor: pointer; position: relative; overflow: hidden;
-        }
-        .nav-card::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-            background: var(--primary); transform: scaleX(0); transition: transform 0.3s ease;
-        }
-        .nav-card:hover { transform: translateY(-6px); border-color: var(--primary-light); box-shadow: 0 12px 24px -8px rgba(13,71,161,0.15); }
-        .nav-card:hover::before { transform: scaleX(1); }
-        .card-icon { font-size: 2.8rem; margin-bottom: 20px; color: var(--primary); }
-        .card-title { font-size: 1.4rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 12px; }
-        .card-desc { font-size: 0.95rem; color: var(--text-light); line-height: 1.6; }
-        .word-link-box {
-            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
-            border-left: 6px solid var(--primary);
-            padding: 30px;
-            margin: 40px auto;
-            border-radius: var(--radius);
-            max-width: 800px;
-            text-align: center;
-            box-shadow: var(--shadow);
-        }
-        .word-button {
-            display: inline-block;
-            background: #0D47A1;
-            color: white;
-            padding: 14px 32px;
-            text-decoration: none;
-            border-radius: 40px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-top: 15px;
-            transition: background 0.3s, transform 0.2s;
-            border: 2px solid transparent;
-        }
-        .word-button:hover {
-            background: #1565C0;
-            transform: translateY(-2px);
-            border-color: white;
-        }
-        .document-footer { text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--border); color: var(--text-light); font-size: 0.95rem; }
-        @media (max-width: 768px) { .project-title { font-size: 2.5rem; } .cards-grid { grid-template-columns: 1fr; } }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Block by Block – Web-Dokumentation</title>
+  <style>
+    :root {
+      --primary-dark: #0d47a1;
+      --primary: #1565c0;
+      --primary-light: #42a5f5;
+      --surface: #ffffff;
+      --background: #f5f9ff;
+      --text: #1e293b;
+      --text-light: #64748b;
+      --border: #dbe6f5;
+      --shadow: 0 8px 20px rgba(13, 71, 161, 0.12);
+      --radius: 14px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: "Segoe UI", system-ui, sans-serif; }
+    body { background: linear-gradient(140deg, #f8fbff 0%, #e7effb 100%); color: var(--text); line-height: 1.6; }
+    .page { max-width: 1160px; margin: 0 auto; padding: 36px 18px 46px; }
+    .header { text-align: center; margin-bottom: 34px; }
+    .title { color: var(--primary-dark); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; }
+    .subtitle { color: var(--text-light); margin-top: 8px; }
+    .meta {
+      margin: 24px auto 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      max-width: 980px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+      padding: 22px;
+    }
+    .meta .label { color: var(--text-light); font-size: 0.9rem; display: block; }
+    .meta .value { color: var(--primary-dark); font-weight: 700; }
+    .overview {
+      text-align: center;
+      margin: 34px auto;
+      max-width: 860px;
+      background: rgba(255,255,255,.75);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin-top: 28px; }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: inherit;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      transition: .2s ease;
+      text-align: center;
+    }
+    .card:hover { transform: translateY(-4px); border-color: var(--primary-light); }
+    .card h3 { color: var(--primary-dark); margin: 8px 0; }
+    .film-box a:hover { transform: translateY(-2px); box-shadow: 0 8px 16px rgba(0,0,0,0.18); }
+    .note-box {
+      max-width: 800px;
+      margin: 22px auto 0;
+      background: #eff6ff;
+      border-left: 5px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      color: #1e3a8a;
+      text-align: center;
+    }
+    footer { text-align: center; margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--text-light); font-size: .95rem; }
+  </style>
 </head>
 <body>
-    <div class="page-container">
-        <header class="main-header">
-            <h1 class="project-title">Block by Block</h1>
-            <div class="project-subtitle">Animationsfilm - Komplette Projekt-Dokumentation</div>
-            
-            <div class="metadata-grid">
-                <div class="metadata-item"><span class="metadata-label">Projektleitung</span><span class="metadata-value">Livius Grob</span></div>
-                <div class="metadata-item"><span class="metadata-label">Team</span><span class="metadata-value">Team G</span></div>
-                <div class="metadata-item"><span class="metadata-label">Dokumentenstand</span><span class="metadata-value">20. April 2026</span></div>
-                <div class="metadata-item"><span class="metadata-label">Status</span><span class="metadata-value">Projekt erfolgreich abgeschlossen – Film "Block by Block" fertiggestellt</span></div>
-                <div class="metadata-item"><span class="metadata-label">Dokumentversion</span><span class="metadata-value">2.1</span></div>
-                <div class="metadata-item"><span class="metadata-label">Format</span><span class="metadata-value">Interaktive Web-Dokumentation</span></div>
-            </div>
-        </header>
+  <div class="page">
+    <header class="header">
+      <h1 class="title">Block by Block</h1>
+      <p class="subtitle">Animationsfilm – Interaktive Web-Dokumentation</p>
+      <div class="meta">
+        <div><span class="label">Projektleitung</span><span class="value">Livius Grob</span></div>
+        <div><span class="label">Team</span><span class="value">Team G</span></div>
+        <div><span class="label">Dokumentenstand</span><span class="value">20. April 2026</span></div>
+        <div><span class="label">Status</span><span class="value">Projekt erfolgreich abgeschlossen – Film „Block by Block“ fertiggestellt</span></div>
+        <div><span class="label">Dokumentversion</span><span class="value">2.1</span></div>
+        <div><span class="label">Format</span><span class="value">Web-Dokumentation</span></div>
+      </div>
+    </header>
 
-        <main>
-            <div style="text-align: center; margin: 40px 0;">
-                <div style="font-size: 2.8rem; margin-bottom: 20px;">🚀</div>
-                <h2 style="font-size: 2rem; color: var(--primary-dark); margin-bottom: 20px;">Projektübersicht</h2>
-                <div style="max-width: 800px; margin: 0 auto; font-size: 1.1rem; line-height: 1.8;">
-                    <p><strong>Block by Block</strong> – Die erste Nacht in Minecraft als emotionaler Animationsfilm.</p>
-                    <p>Workflow-Status: ✅ Storyboard auf 160 Shots abgeschlossen | ✅ Teaser auf 15 Sekunden fertiggestellt | ✅ Abgabe 20.04.2026 – Film online</p>
-                </div>
-            </div>
+    <section class="overview">
+      <p><strong>Block by Block</strong> erzählt die erste Nacht in Minecraft als emotionalen Kurzfilm.</p>
+      <p style="margin-top:8px;">Kurzer Projektstatus: ✅ Abgabe 20.04.2026 – Film online</p>
+    </section>
 
-            <div class="cards-grid">
-                <a href="protokoll.html" class="nav-card">
-                    <div class="card-icon">📅</div>
-                    <div class="card-title">Projektprotokoll</div>
-                    <div class="card-desc">Chronologie aller Arbeitsschritte (aktuell: 19.04.2026 mit finalem Render, Schnitt und fertigem Filmexport).</div>
-                </a>
-                <a href="schritte.html" class="nav-card">
-                    <div class="card-icon">🎯</div>
-                    <div class="card-title">Nächste Schritte</div>
-                    <div class="card-desc">Alle bisherigen Schritte abgeschlossen; optional: Projektreflexion für das Portfolio.</div>
-                </a>
-                <a href="ressource.html" class="nav-card">
-                    <div class="card-icon">🛠️</div>
-                    <div class="card-title">Ressourcen</div>
-                    <div class="card-desc">Mineways, McPrep, BSS Rig Pack, Tutorials.</div>
-                </a>
-                <a href="technik.html" class="nav-card">
-                    <div class="card-icon">⚙️</div>
-                    <div class="card-title">Technik</div>
-                    <div class="card-desc">Blender-Kürzel, Render-Setup, Workflow, .url-Methode.</div>
-                </a>
-                <a href="regiebuch.html" class="nav-card">
-                    <div class="card-icon">🎬</div>
-                    <div class="card-title">Regiebuch</div>
-                    <div class="card-desc">18 Szenen mit Kamera, Licht, Sound, Action.</div>
-                </a>
-            </div>
+    <main class="cards">
+      <a href="protokoll.html" class="card"><div style="font-size:2rem;">📅</div><h3>Projektprotokoll</h3><p>Alle Einträge vom Start bis zur finalen Abgabe.</p></a>
+      <a href="schritte.html" class="card"><div style="font-size:2rem;">🎯</div><h3>Nächste Schritte</h3><p>Abschlussstatus und optionale Portfolio-Reflexion.</p></a>
+      <a href="ressource.html" class="card"><div style="font-size:2rem;">🛠️</div><h3>Ressourcen</h3><p>Tools, Plattformen, KI-Assistenten und Workflow.</p></a>
+      <a href="technik.html" class="card"><div style="font-size:2rem;">⚙️</div><h3>Technik</h3><p>Render-Setup, Modellierung, Audio und Hosting.</p></a>
+      <a href="regiebuch.html" class="card"><div style="font-size:2rem;">🎬</div><h3>Regiebuch</h3><p>Smartscript-Szenen ohne Dialog (ca. 15 Minuten).</p></a>
+    </main>
 
-            <!-- 🔗 WORD-DOKUMENT LINK – STARTET ZWINGEND WORD-DESKTOP-APP -->
-            <div class="word-link-box">
-                <span style="font-size: 36px;">📄</span>
-                <h3 style="color: #0D47A1; margin: 10px 0 5px 0;">Projektarbeit Word-Dokument</h3>
-                <p style="font-size: 1.1rem; margin-bottom: 5px;">Vollständige schriftliche Ausarbeitung mit allen formalen Vorgaben.</p>
-                <p style="font-size: 0.95rem; color: var(--text-light); margin-bottom: 15px;">
-                    (Arial 11pt, 1.5-facher Zeilenabstand, 9 Seiten inkl. Anhang)
-                </p>
-                <a href="ms-word:ofe|u|https://ictedubs-my.sharepoint.com/:w:/g/personal/livius_grob_stud_edubs_ch/IQBy64mo5qaqSr7lDbOSlP-GAdHhJsFa2REnKXB1Z_6ROIc?e=thTp0Z" 
-                   target="_blank" 
-                   class="word-button">
-                    📥 Word-Dokument in Desktop-App öffnen
-                </a>
-                <p style="font-size: 0.85rem; margin-top: 15px; color: #1565C0;">
-                    ⚡ Startet Microsoft Word auf Ihrem Computer (erfordert installierte Word-Desktop-Version).
-                </p>
-                <p style="font-size: 0.8rem; margin-top: 5px; color: #64748b;">
-                    Falls Word nicht startet: <a href="https://ictedubs-my.sharepoint.com/:w:/g/personal/livius_grob_stud_edubs_ch/IQBy64mo5qaqSr7lDbOSlP-GAdHhJsFa2REnKXB1Z_6ROIc?e=GhLMNJ" target="_blank" style="color: #0D47A1;">Web-Version öffnen</a>
-                </p>
-            </div>
-
-            <!-- Kurz-Hinweis zur .url-Datei -->
-            <p style="text-align: center; font-size: 0.9rem; color: var(--text-light); margin-top: 20px;">
-                💡 <strong>Direktstart dieser Webseite:</strong> Doppelklick auf <code>Web-Doku.url</code> (im Hauptordner) – öffnet diese Seite garantiert im Browser.
-            </p>
-        </main>
-
-        <footer class="document-footer">
-            <strong>Block by Block</strong> – Projekt-Dokumentation v2.1<br>
-            Livius Grob | Team G | Stand: 20. April 2026
-        </footer>
+    <div class="film-box" style="background: linear-gradient(135deg, #0D47A1 0%, #1565C0 100%); border-radius: 20px; padding: 30px; margin: 40px auto; max-width: 800px; text-align: center; box-shadow: 0 8px 20px rgba(13, 71, 161, 0.3);">
+      <span style="font-size: 48px;">🎬</span>
+      <h3 style="color: white; margin: 15px 0 10px 0;">Fertiger Film – Block by Block</h3>
+      <p style="color: #E3F2FD; margin-bottom: 20px;">Der vollständige Animationsfilm (ca. 15 Minuten) – jetzt auf YouTube ansehen.</p>
+      <a href="https://youtu.be/oWNugErewoc" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: white; color: #0D47A1; padding: 14px 32px; border-radius: 40px; text-decoration: none; font-weight: bold; font-size: 1.2rem; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">▶ Film ansehen (YouTube)</a>
+      <p style="color: #BBDEFB; font-size: 0.85rem; margin-top: 20px;">🔗 Link ist nicht öffentlich – nur mit diesem Direktlink aufrufbar.</p>
     </div>
-</body>
 
+    <div class="note-box">
+      Diese Web-Dokumentation ersetzt die vollständige schriftliche Arbeit im separaten Word-Format.
+    </div>
+
+    <footer>
+      <strong>Block by Block</strong> – Startseite<br />
+      Livius Grob | Team G | Stand: 20. April 2026
+    </footer>
+  </div>
+</body>
 </html>

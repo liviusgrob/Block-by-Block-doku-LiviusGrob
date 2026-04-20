@@ -1,373 +1,99 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ressourcen – Block by Block</title>
-    <style>
-        :root {
-            --primary-dark: #0D47A1;
-            --primary: #1565C0;
-            --surface: #ffffff;
-            --background: #f4f7fb;
-            --text: #1f2937;
-            --text-light: #6b7280;
-            --border: #dbe3ef;
-            --shadow: 0 8px 20px rgba(13, 71, 161, 0.08);
-            --radius: 12px;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-        }
-
-        body {
-            background: linear-gradient(160deg, #f8fbff 0%, var(--background) 100%);
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        .page-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 36px 20px 48px;
-        }
-
-        .back-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--primary);
-            color: #ffffff;
-            text-decoration: none;
-            padding: 10px 18px;
-            border-radius: 10px;
-            font-weight: 600;
-            transition: background 0.2s ease, transform 0.2s ease;
-            margin-bottom: 20px;
-        }
-
-        .back-button:hover {
-            background: var(--primary-dark);
-            transform: translateY(-1px);
-        }
-
-        .section-header {
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-            color: #ffffff;
-            border-radius: var(--radius);
-            padding: 30px 24px;
-            margin-bottom: 28px;
-            text-align: center;
-            box-shadow: var(--shadow);
-        }
-
-        .section-header h1 {
-            font-size: clamp(1.6rem, 2.2vw, 2.2rem);
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .section-header p {
-            opacity: 0.95;
-        }
-
-        .category {
-            margin-bottom: 30px;
-        }
-
-        .category h2 {
-            color: var(--primary-dark);
-            font-size: 1.25rem;
-            margin-bottom: 14px;
-            padding-bottom: 6px;
-            border-bottom: 2px solid #cfe0fb;
-        }
-
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 18px;
-        }
-
-        .tool-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 18px;
-            box-shadow: 0 3px 10px rgba(13, 71, 161, 0.05);
-            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-        }
-
-        .tool-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-            border-color: #b8cff5;
-        }
-
-        .tool-icon {
-            font-size: 1.6rem;
-            margin-bottom: 10px;
-        }
-
-        .tool-name {
-            color: var(--primary-dark);
-            font-size: 1.05rem;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .tool-type {
-            font-size: 0.86rem;
-            color: var(--text-light);
-            margin-bottom: 10px;
-            font-style: italic;
-        }
-
-        .tool-card p {
-            font-size: 0.95rem;
-        }
-
-        .note-box {
-            background: #ffffff;
-            border: 1px solid #c8daf7;
-            border-left: 5px solid var(--primary);
-            border-radius: var(--radius);
-            padding: 20px;
-            margin-top: 8px;
-            box-shadow: 0 3px 10px rgba(13, 71, 161, 0.05);
-        }
-
-        .note-box p {
-            margin: 0;
-            color: #1f3d73;
-            font-style: italic;
-            font-weight: 500;
-        }
-
-        .document-footer {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border);
-            color: var(--text-light);
-            font-size: 0.92rem;
-        }
-
-        @media (max-width: 980px) {
-            .tools-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-        }
-
-        @media (max-width: 640px) {
-            .page-container {
-                padding: 24px 14px 34px;
-            }
-
-            .tools-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ressourcen – Block by Block</title>
+  <style>
+    :root { --primary-dark:#0d47a1; --primary:#1565c0; --surface:#fff; --bg:#f4f8ff; --text:#1f2937; --muted:#6b7280; --border:#d9e4f5; --shadow:0 8px 18px rgba(13,71,161,.08); --radius:12px; }
+    *{box-sizing:border-box;margin:0;padding:0;font-family:"Segoe UI",system-ui,sans-serif}
+    body{background:linear-gradient(155deg,#f8fbff 0%,var(--bg) 100%);color:var(--text);line-height:1.6}
+    .page{max-width:1120px;margin:0 auto;padding:34px 18px 44px}
+    .back{display:inline-block;background:var(--primary);color:#fff;text-decoration:none;padding:10px 16px;border-radius:10px;margin-bottom:18px;font-weight:600}
+    .head{background:linear-gradient(135deg,var(--primary-dark),var(--primary));color:#fff;padding:26px;border-radius:var(--radius);text-align:center;box-shadow:var(--shadow);margin-bottom:22px}
+    .section{margin-bottom:24px}
+    .section h2{color:var(--primary-dark);margin-bottom:10px;border-bottom:2px solid #cfe0fb;padding-bottom:6px}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;box-shadow:0 3px 10px rgba(13,71,161,.05)}
+    .card h3{font-size:1rem;color:var(--primary-dark)}
+    .type{font-size:.85rem;color:var(--muted);font-style:italic;margin:3px 0 7px}
+    .note{background:#fff;border:1px solid #c9dbf7;border-left:5px solid var(--primary);border-radius:var(--radius);padding:16px;color:#163e7a;font-style:italic}
+    footer{text-align:center;margin-top:32px;padding-top:16px;border-top:1px solid var(--border);color:var(--muted);font-size:.95rem}
+    @media (max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+    @media (max-width:620px){.grid{grid-template-columns:1fr;}}
+  </style>
 </head>
 <body>
-    <main class="page-container">
-        <a href="index.html" class="back-button">← Zurück zur Startseite</a>
+  <main class="page">
+    <a class="back" href="index.html">← Zurück zur Startseite</a>
+    <header class="head">
+      <h1>Ressourcen &amp; Werkzeuge</h1>
+      <p>Vollständige Tool- und Plattformübersicht für die Produktion von <strong>Block by Block</strong>.</p>
+    </header>
 
-        <header class="section-header">
-            <h1>Ressourcen &amp; Werkzeuge</h1>
-            <p>Alle zentralen Tools, Plattformen und KI‑Assistenten für die Produktion von <strong>Block by Block</strong>.</p>
-        </header>
+    <section class="section">
+      <h2>Kern-Tools &amp; Workflow</h2>
+      <div class="grid">
+        <article class="card"><h3>Blender</h3><div class="type">3D-Hauptsoftware</div><p>Modellierung, Rigging, Animation, Licht und Rendering.</p></article>
+        <article class="card"><h3>Mineways</h3><div class="type">World-Export</div><p>Minecraft-Welten als Blender-kompatible Assets exportiert.</p></article>
+        <article class="card"><h3>McPrep</h3><div class="type">Blender-Addon</div><p>Material- und Textur-Setup für Minecraft-Workflow.</p></article>
+        <article class="card"><h3>BSS Rig Pack</h3><div class="type">Rig-Bibliothek</div><p>Animierbare Basis-Rigs für Minecraft-Charaktere.</p></article>
+        <article class="card"><h3>YouTube-Playlist</h3><div class="type">Lernressource</div><p>Tutorial-Reihe zu Animation, Kamera und Rendering.</p></article>
+      </div>
+    </section>
 
-        <section class="category" aria-labelledby="workflow-tools">
-            <h2 id="workflow-tools">Blender &amp; Workflow</h2>
-            <div class="tools-grid">
-                <article class="tool-card">
-                    <div class="tool-icon">🧊</div>
-                    <h3 class="tool-name">Blender 3.6 / 4.5</h3>
-                    <div class="tool-type">3D‑Suite / Hauptsoftware</div>
-                    <p>Zentrales Tool für Modellierung, Rigging, Animation, Beleuchtung und Rendering aller Filmszenen.</p>
-                </article>
-                <article class="tool-card">
-                    <div class="tool-icon">⛏️</div>
-                    <h3 class="tool-name">Mineways 12.11</h3>
-                    <div class="tool-type">World‑Export‑Tool</div>
-                    <p>Exportiert Minecraft‑Welten in Blender‑kompatible 3D‑Modelle für Landschaften, Gebäude und Kulissen.</p>
-                </article>
-                <article class="tool-card">
-                    <div class="tool-icon">🎨</div>
-                    <h3 class="tool-name">McPrep</h3>
-                    <div class="tool-type">Blender‑Addon</div>
-                    <p>Automatisiert Import, Materialien und Texturen für Minecraft‑Assets und beschleunigt den gesamten Workflow.</p>
-                </article>
-                <article class="tool-card">
-                    <div class="tool-icon">🤖</div>
-                    <h3 class="tool-name">BSS Rig Pack</h3>
-                    <div class="tool-type">Rig‑Bibliothek</div>
-                    <p>Bereitstellung animierbarer Minecraft‑Charaktere mit vorkonfigurierten Controls für schnelle Szenenproduktion.</p>
-                </article>
-                <article class="tool-card">
-                    <div class="tool-icon">📺</div>
-                    <h3 class="tool-name">YouTube‑Playlist</h3>
-                    <div class="tool-type">Lernressource (62 Tutorials)</div>
-                    <p>Sammlung praxisnaher Tutorials zu Minecraft‑Animation, Texturierung, Rigging, Kameraarbeit und Rendering.</p>
-                </article>
-                <article class="tool-card">
-                    <div class="tool-icon">🧩</div>
-                    <h3 class="tool-name">MC Animaker</h3>
-                    <div class="tool-type">Animations‑Erweiterung</div>
-                    <p>Ermöglicht erweiterte, datapack‑gesteuerte Animationsabläufe für präzise und wiederholbare Bewegungsabläufe.</p>
-                </article>
-                <article class="tool-card">
-                    <div class="tool-icon">🧪</div>
-                    <h3 class="tool-name">MCBlend</h3>
-                    <div class="tool-type">Bedrock‑Modellierung</div>
-                    <p>Erstellung von Bedrock‑Modellen inklusive physikalischer Simulation zur Entwicklung dynamischer Effekte.</p>
-                </article>
-                <article class="tool-card">
-                    <div class="tool-icon">🪄</div>
-                    <h3 class="tool-name">R‑G Simple Minecraft Rig</h3>
-                    <div class="tool-type">Open‑Source Rig (MIT)</div>
-                    <p>Einfaches, kostenloses Rig für schnellen Einstieg in Charakteranimation mit schlanker Bedienung.</p>
-                </article>
-                <article class="tool-card">
-                    <div class="tool-icon">🕹️</div>
-                    <h3 class="tool-name">Endertainer Rig</h3>
-                    <div class="tool-type">Modulares Rigging‑System</div>
-                    <p>Fortgeschrittenes Setup mit modularen Komponenten für komplexe Charakter‑Posen und präzise Kontrolle.</p>
-                </article>
-                <article class="tool-card">
-                    <div class="tool-icon">🎛️</div>
-                    <h3 class="tool-name">Thomas Rig Legacy</h3>
-                    <div class="tool-type">Rig‑Komplettlösung</div>
-                    <p>Umfangreiches Rig mit UI‑Panel und Face‑Controls für ausdrucksstarke Animationen und effiziente Bedienung.</p>
-                </article>
-                <article class="tool-card">
-                    <div class="tool-icon">💠</div>
-                    <h3 class="tool-name">Crafter GSL</h3>
-                    <div class="tool-type">Render‑/Animationstool</div>
-                    <p>Spezialisierte Unterstützung für Yes‑Steve‑Model‑Charaktere bei Rendering und Animationsprozessen.</p>
-                </article>
-                <article class="tool-card">
-                    <div class="tool-icon">🦴</div>
-                    <h3 class="tool-name">Auto‑Rig Pro (ARP)</h3>
-                    <div class="tool-type">Professionelles Rigging‑Addon</div>
-                    <p>Leistungsstarkes Rigging‑System für menschliche Charaktere und komplexere Bewegungsabläufe außerhalb des Minecraft‑Standards.</p>
-                </article>
-                <article class="tool-card">
-                    <div class="tool-icon">🧱</div>
-                    <h3 class="tool-name">Blockbench</h3>
-                    <div class="tool-type">Spezial‑Modellierungstool</div>
-                    <p>Fokussiert auf Minecraft‑Assets, ideal für Block‑Modelle, Items und schnelle Iteration von Game‑nahen Designs.</p>
-                </article>
-            </div>
-        </section>
+    <section class="section">
+      <h2>Ergänzende Blender-Tools &amp; Rigs</h2>
+      <div class="grid">
+        <article class="card"><h3>MC Animaker</h3><div class="type">Animation</div><p>Hilft bei strukturierten Bewegungsabläufen.</p></article>
+        <article class="card"><h3>MCBlend</h3><div class="type">Bedrock-Modelle</div><p>Zusätzliche Modellierungsoptionen für Minecraft-Assets.</p></article>
+        <article class="card"><h3>R-G Simple Rig</h3><div class="type">Rigging</div><p>Leichtes Setup für schnelle Charakteranimation.</p></article>
+        <article class="card"><h3>Endertainer Rig</h3><div class="type">Rigging</div><p>Modulare Steuerung für komplexere Posen.</p></article>
+        <article class="card"><h3>Thomas Rig</h3><div class="type">Rigging</div><p>Erweitertes Rig mit zusätzlichen Controls.</p></article>
+        <article class="card"><h3>Crafter GSL</h3><div class="type">Rendering/Animation</div><p>Spezialisierte Unterstützung für Minecraft-Figuren.</p></article>
+        <article class="card"><h3>Auto-Rig Pro</h3><div class="type">Pro-Addon</div><p>Verwendet für sauberes Rigging komplexerer Figuren.</p></article>
+        <article class="card"><h3>Blockbench</h3><div class="type">Modeling</div><p>Blockbasierte Modelle und schnelle Asset-Iteration.</p></article>
+      </div>
+    </section>
 
-        <section class="category" aria-labelledby="ai-assistants">
-            <h2 id="ai-assistants">KI‑Assistenten (unterstützend)</h2>
-            <div class="tools-grid">
-                <article class="tool-card">
-                    <div class="tool-icon">💬</div>
-                    <h3 class="tool-name">ChatGPT / Codex (OpenAI)</h3>
-                    <div class="tool-type">KI‑Assistenz</div>
-                    <p>Unterstützung bei Python‑Skripten, Fehlersuche und Optimierung technischer Abläufe in der Produktionspipeline.</p>
-                </article>
-                <article class="tool-card">
-                    <div class="tool-icon">🧠</div>
-                    <h3 class="tool-name">DeepSeek V4</h3>
-                    <div class="tool-type">KI‑Assistenz</div>
-                    <p>Hilft bei Rigging‑Erklärungen und bei der Strukturierung von HTML/CSS in der Dokumentationsseite.</p>
-                </article>
-                <article class="tool-card">
-                    <div class="tool-icon">📝</div>
-                    <h3 class="tool-name">Claude (Anthropic)</h3>
-                    <div class="tool-type">KI‑Assistenz</div>
-                    <p>Eingesetzt zur sprachlichen Überarbeitung von Texten und zur kompakten Zusammenfassung von Protokollen.</p>
-                </article>
-            </div>
-        </section>
+    <section class="section">
+      <h2>3D-Modell Plattformen</h2>
+      <div class="grid">
+        <article class="card"><h3>Sketchfab</h3><div class="type">3D-Plattform</div><p>Modelle recherchieren und visuell prüfen.</p></article>
+        <article class="card"><h3>TurboSquid</h3><div class="type">Asset-Store</div><p>Professionelle 3D-Assets für Szenenergänzungen.</p></article>
+        <article class="card"><h3>CGTrader</h3><div class="type">Asset-Store</div><p>Kostenlose und kostenpflichtige Modelle.</p></article>
+        <article class="card"><h3>3DExport</h3><div class="type">Asset-Bibliothek</div><p>Weitere Blender-kompatible Modelle.</p></article>
+        <article class="card"><h3>BlenderKit</h3><div class="type">In-Blender Library</div><p>Materialien und Assets direkt in Blender.</p></article>
+      </div>
+    </section>
 
-        <section class="category" aria-labelledby="model-platforms">
-            <h2 id="model-platforms">Plattformen für 3D‑Modelle</h2>
-            <div class="tools-grid">
-                <article class="tool-card">
-                    <div class="tool-icon">🌐</div>
-                    <h3 class="tool-name">Sketchfab</h3>
-                    <div class="tool-type">3D‑Plattform</div>
-                    <p>Interaktive Vorschau und Beschaffung von 3D‑Modellen, insbesondere für Charaktere und Kreaturen.</p>
-                </article>
-                <article class="tool-card">
-                    <div class="tool-icon">📦</div>
-                    <h3 class="tool-name">TurboSquid</h3>
-                    <div class="tool-type">3D‑Asset‑Marktplatz</div>
-                    <p>Bietet hochwertige Minecraft‑Modelle und weitere Assets für detailreiche Szenen und Requisiten.</p>
-                </article>
-                <article class="tool-card">
-                    <div class="tool-icon">🛒</div>
-                    <h3 class="tool-name">CGTrader</h3>
-                    <div class="tool-type">3D‑Asset‑Plattform</div>
-                    <p>Kombiniert kostenlose und kostenpflichtige Modelle, passend für schnelle Set‑Erweiterungen.</p>
-                </article>
-                <article class="tool-card">
-                    <div class="tool-icon">📐</div>
-                    <h3 class="tool-name">3DExport</h3>
-                    <div class="tool-type">Modellbibliothek</div>
-                    <p>Quelle für Blender‑kompatible Modelle zur Ergänzung von Umgebungen, Props und technischen Objekten.</p>
-                </article>
-                <article class="tool-card">
-                    <div class="tool-icon">🧴</div>
-                    <h3 class="tool-name">BlenderKit</h3>
-                    <div class="tool-type">Material‑/Asset‑Bibliothek</div>
-                    <p>Direkter Zugriff auf Texturen und Materialien wie Terrakotta‑Sets für realistischere Oberflächen.</p>
-                </article>
-            </div>
-        </section>
+    <section class="section">
+      <h2>Sound, Hosting &amp; Postproduktion</h2>
+      <div class="grid">
+        <article class="card"><h3>Pixabay</h3><div class="type">Audio-Ressourcen</div><p>Recherchequelle für mögliche Soundeffekte und Atmos.</p></article>
+        <article class="card"><h3>GitHub Pages</h3><div class="type">Hosting</div><p>Bereitstellung der Web-Dokumentation.</p></article>
+        <article class="card"><h3>DaVinci Resolve</h3><div class="type">Postproduktion</div><p>Schnitt, Titel, Abspann und finaler Export.</p></article>
+      </div>
+    </section>
 
-        <section class="category" aria-labelledby="sound-music">
-            <h2 id="sound-music">Sound &amp; Musik</h2>
-            <div class="tools-grid">
-                <article class="tool-card">
-                    <div class="tool-icon">🔊</div>
-                    <h3 class="tool-name">Pixabay</h3>
-                    <div class="tool-type">Audio‑Ressourcen</div>
-                    <p>Lizenzfreie Soundeffekte und Umgebungsgeräusche (z. B. Wind, Natur‑Ambience) für die Tonkulisse.</p>
-                </article>
-            </div>
-        </section>
+    <section class="section">
+      <h2>KI-Assistenten (unterstützend)</h2>
+      <div class="grid">
+        <article class="card"><h3>ChatGPT / Codex</h3><div class="type">KI-Assistenz</div><p>Unterstützung bei Struktur, Fehlersuche und Dokumentation.</p></article>
+        <article class="card"><h3>DeepSeek V4</h3><div class="type">KI-Assistenz</div><p>Zusätzliche technische Ideensammlung.</p></article>
+        <article class="card"><h3>Claude</h3><div class="type">KI-Assistenz</div><p>Sprachliche Überarbeitung und Textkonsistenz.</p></article>
+      </div>
+    </section>
 
-        <section class="category" aria-labelledby="hosting-docs">
-            <h2 id="hosting-docs">Hosting &amp; Dokumentation</h2>
-            <div class="tools-grid">
-                <article class="tool-card">
-                    <div class="tool-icon">🚀</div>
-                    <h3 class="tool-name">GitHub Pages</h3>
-                    <div class="tool-type">Web‑Hosting</div>
-                    <p>Kostenloses Hosting der interaktiven Projektdokumentation unter einer stabilen, öffentlich zugänglichen URL.</p>
-                </article>
-                <article class="tool-card">
-                    <div class="tool-icon">🎬</div>
-                    <h3 class="tool-name">DaVinci Resolve</h3>
-                    <div class="tool-type">Postproduktion</div>
-                    <p>Finaler Videoschnitt, Übergänge, Audiomix und Ausspielung der fertigen Filmversion.</p>
-                </article>
-            </div>
-        </section>
+    <section class="section">
+      <h2>Hinweis zur Eigenleistung</h2>
+      <div class="note">„Alle KI-generierten Vorschläge wurden von mir eigenständig geprüft, angepasst und in den Projektkontext integriert. Die kreative Gestaltung, Entscheidungen und die finale Umsetzung liegen vollständig bei mir.“</div>
+    </section>
 
-        <section class="category" aria-labelledby="eigenleistung-hinweis">
-            <h2 id="eigenleistung-hinweis">Hinweis zur Eigenleistung</h2>
-            <div class="note-box">
-                <p>„Alle KI‑generierten Vorschläge wurden von mir eigenständig geprüft, angepasst und in den Projektkontext integriert. Die kreative Gestaltung, Entscheidungen und die finale Umsetzung liegen vollständig bei mir.“</p>
-            </div>
-        </section>
-
-        <footer class="document-footer">
-            <strong>Block by Block</strong> – Ressourcen<br>
-            Livius Grob | Team G | Stand: 20. April 2026
-        </footer>
-    </main>
+    <footer>
+      <strong>Block by Block</strong> – Ressourcen<br />
+      Livius Grob | Team G | Stand: 20. April 2026
+    </footer>
+  </main>
 </body>
 </html>
